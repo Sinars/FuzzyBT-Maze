@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class SpiderAttack : MonoBehaviour {
 
@@ -16,6 +18,8 @@ public class SpiderAttack : MonoBehaviour {
     private PlayerHealth health;
     private PlayerStatus status;
     private float elapsedTime;
+
+    private RaycastHit raycastHit;
     // Use this for initialization
     void Start () {
         target = GameManagement.GM.player;
@@ -25,25 +29,24 @@ public class SpiderAttack : MonoBehaviour {
         status = target.GetComponent<PlayerStatus>();
 	}
 	
-	// Update is called once per frame
-    public void Attack() {
-        float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
+    public void Attack()
+    {
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit,
+            targetDistance)) return;
+        Debug.Log("Hit");
         transform.LookAt(target.transform);
-        Debug.Log(distance + " " + targetDistance);
-        if (distance <= targetDistance) {
-            health.takeDamage(damage);
-        }
+        health.takeDamage(damage);
     }
     
-    public void PoisonAttack() {
-        float distance = Vector3.Distance(gameObject.transform.position, target.transform.position);
+    public void PoisonAttack()
+    {
+        if (!Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit,
+            targetDistance)) return;
         transform.LookAt(target.transform);
-        if (distance <= targetDistance) {
-            health.takeDamage(poisonDamage);
-            status.AddBuff(new Buff(Effect.POISONED, poisonDamage, poisionRate));
-            poisoned = true;
-            elapsedTime = Time.time;
-        }
+        health.takeDamage(poisonDamage);
+        status.AddBuff(new Buff(Effect.POISONED, poisonDamage, poisionRate));
+        poisoned = true;
+        elapsedTime = Time.time;
     }
 
     public void LateUpdate() {
