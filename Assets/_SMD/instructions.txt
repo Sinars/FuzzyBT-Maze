@@ -1,0 +1,36 @@
+About:
+
+SMD (simple mesh decals) is a childish attempt at a mesh decal system. SMD is a level (environment) decal editor and is not designed for real-time usage. Best not to be used in production environments. I certainly am not.
+
+Quick start:
+
+Drag the Decal Manager prefab into your scene.
+Click the Create New Decal Button. Your new decal will be selected automatically.
+Make sure that the object you're planning on placing has a collider and is not set to ignore raycasts.
+Move, rotate, scale and position your decal. Click Place when done.
+You can always hit reset to reposition the decal.
+Use the Ground Dist. slider to adjust the decal ground "hug" distance.
+
+Random stuff:
+
+If creating a new prefab, remember to use a Plane for the prefab model. Do not add a collider to the prefab;
+Decals are grouped and combined based on material name.
+Decals will always raycast downwards (relative to the decal);
+
+Warnings:
+
+Use the Delete All button with caution. It will delete all your decal GameObjects and all the meshes that have been saved in the NewEditorMeshes folder.
+
+Can not guarantee that it will play nicely with anything else.
+
+
+Included scripts:
+
+_SMD
+--DecalManager.cs
+--SimpleMeshDecal.cs
+--CombineDecals.cs
+--DecalCombineUtility.cs
+Editor
+--DecalManagerEditor.js
+--SimpleMeshDecalEditor.js
