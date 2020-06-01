@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class TrapLeverPlacer: MonoBehaviour {
 
-    private MazeBuilder mazeBuilder;
 
     public GameObject lever;
 
@@ -17,14 +16,14 @@ public class TrapLeverPlacer: MonoBehaviour {
 
     private Cell[] cells;
 
-    // Use this for initialization
-    void Start () {
-        mazeBuilder = GetComponent<MazeBuilder>();
-        InitData();
-       
-	}
-    void InitData() {
-        Maze maze = mazeBuilder.Maze;
+    void FinalizedWalls(Maze maze)
+    {
+        Debug.Log("Placing levers");
+        InitData(maze);
+
+    }
+
+    void InitData(Maze maze) {
         cells = maze.Cells;
         int trapCount = (int)Mathf.Floor(maze.X * maze.Y / 10);
         List<Node> nodes = Graph.CreateGraph(maze);

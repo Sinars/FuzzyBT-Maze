@@ -5,23 +5,25 @@ using UnityEngine;
 public class ChestPlacer : MonoBehaviour {
 
     // Use this for initialization
-    private MazeBuilder mazeBuilder;
     private GameObject holder;
     public GameObject chest;
     public Vector3 chestOffset;
     public int maxChestCount;
     public int minChestCount;
     private int chestCount;
-	void Start () {
+
+    public void FinalizedWalls(Maze maze)
+    {
+        Debug.Log("Setting chests");
         holder = new GameObject();
         holder.name = "Chests";
-        mazeBuilder = GetComponent<MazeBuilder>();
         chestCount = Random.Range(minChestCount, maxChestCount);
-        PlaceChests();
-	}
+        PlaceChests(maze);
+    }
 
-    private List<Cell> GetPlaces() {
-        List<Cell> cells = new List<Cell>(mazeBuilder.Maze.Cells);
+
+    private List<Cell> GetPlaces(Maze maze) {
+        List<Cell> cells = new List<Cell>(maze.Cells);
         cells.RemoveAll(cell =>
             !((cell.East && cell.West && cell.North && !cell.South) ||
                 (cell.South && cell.West && cell.North && !cell.East) ||
@@ -31,8 +33,8 @@ public class ChestPlacer : MonoBehaviour {
         return cells;
     }
 	
-    private void PlaceChests() {
-        List<Cell> cells = GetPlaces();
+    private void PlaceChests(Maze maze) {
+        List<Cell> cells = GetPlaces(maze);
         int distance = (int)Mathf.Floor((cells.Count - 1)/ chestCount);
         for (int i = 1; i < chestCount + 1; i++) {
             PlaceChest(cells[distance * i]); 

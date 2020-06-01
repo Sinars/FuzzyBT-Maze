@@ -29,8 +29,7 @@ public class SpiderController : MonoBehaviour {
 
     public void Update() {
         float distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
-        if (distance < playerDistance)
-        if (Time.time > elapsedTime && !animator.GetCurrentAnimatorStateInfo(0).IsName(attackAnimation)) {
+        if (distance < playerDistance && Time.time > elapsedTime && !animator.GetCurrentAnimatorStateInfo(0).IsName(attackAnimation)) {
             playerHealth.takeDamage(damage);
             elapsedTime = Time.time + attackRate;
         }

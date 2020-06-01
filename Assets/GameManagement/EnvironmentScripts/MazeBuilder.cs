@@ -41,7 +41,7 @@ public class MazeBuilder : MonoBehaviour {
         };
         CreateWalls();
         VisitedCells = 0;
-
+        SendMessage("FinalizedWalls", Maze);
     }
 
 

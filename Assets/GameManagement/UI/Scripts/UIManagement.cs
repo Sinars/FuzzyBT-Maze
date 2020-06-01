@@ -21,6 +21,7 @@ public class UIManagement : MonoBehaviour {
         playerInput.interactable = status;
     }
 
+
     public void ActivateButton() {
         playerInput.Select();
     }

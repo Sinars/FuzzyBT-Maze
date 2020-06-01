@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LeverControler : MonoBehaviour {
@@ -17,21 +18,36 @@ public class LeverControler : MonoBehaviour {
     private List<GameObject> triggers;
     private GameObject player;
     private bool disabled = false;
+    private UnityAction listener;
+    private bool leverPulled = false;
    
     // Use this for initialization
-	void Start () {
+    void Start () {
+        listener = new UnityAction(PullLever);
         handle = gameObject.transform.GetChild(0).gameObject;
         UIManagement.UI.SetEnabledStatus(false);
         player = GameManagement.GM.player;
         GameObject[] temp = GameObject.FindGameObjectsWithTag("Trigger");
         triggers = new List<GameObject>(temp);
         triggers.RemoveAll(trigger => !trigger.activeSelf);
+        EventManager.StartListening("pullLever", listener);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening("pullLever", listener);
+    }
+
+    private void PullLever()
+    {
+        leverPulled = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && playerAround && !disabled)
+        if ((Input.GetKey(KeyCode.E) || leverPulled) && playerAround && !disabled)
         {
             if (!ManagerAudio.instance.isPlaying("Lever"))
             {
@@ -54,7 +70,7 @@ public class LeverControler : MonoBehaviour {
             }
         }
         else
-        if (!Input.GetKey(KeyCode.E) && playerAround && !disabled)
+        if (!(Input.GetKey(KeyCode.E) || leverPulled) && playerAround && !disabled)
         {
             if (handle.transform.position.y < maxYPos && !disabled)
             {

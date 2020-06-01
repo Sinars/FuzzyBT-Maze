@@ -107,6 +107,7 @@
     <Compile Include="Assets\GameManagement\EnvironmentScripts\MonsterPlacer.cs" />
     <Compile Include="Assets\GameManagement\EnvironmentScripts\TrapDisable.cs" />
     <Compile Include="Assets\GameManagement\EnvironmentScripts\TrapLeverPlacer.cs" />
+    <Compile Include="Assets\GameManagement\EventManager.cs" />
     <Compile Include="Assets\GameManagement\ManagerAudio.cs" />
     <Compile Include="Assets\GameManagement\UI\Scripts\ButtonController.cs" />
     <Compile Include="Assets\GameManagement\UI\Scripts\EndGameWallController.cs" />
@@ -124,14 +125,18 @@
     <Compile Include="Assets\GameManagement\UI\Scripts\VolumeController.cs" />
     <Compile Include="Assets\NeuralNetwork\TrainedLayer.cs" />
     <Compile Include="Assets\NeuralNetwork\TrainedNN.cs" />
+    <Compile Include="Assets\Player\Constants\Keyword.cs" />
     <Compile Include="Assets\Player\DamageControl.cs" />
     <Compile Include="Assets\Player\Scripts\Buff.cs" />
     <Compile Include="Assets\Player\Scripts\Effect.cs" />
+    <Compile Include="Assets\Player\Scripts\Opponent.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerSoundHandler.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerStamina.cs" />
     <Compile Include="Assets\Player\Scripts\PlayerStatus.cs" />
+    <Compile Include="Assets\PlayerAttack.cs" />
+    <Compile Include="Assets\PlayerSight.cs" />
     <Compile Include="Assets\ReinforcedWoodenChest\ChestController.cs" />
     <Compile Include="Assets\Scripts\Follow.cs" />
     <Compile Include="Assets\Scripts\LeverControler.cs" />
@@ -157,6 +162,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\AnimationsKickReadMe.txt" />
     <None Include="Assets\_SMD\instructions.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Walls\HighQualityBricks&amp;Walls\Shaders\texture-709723.shader" />

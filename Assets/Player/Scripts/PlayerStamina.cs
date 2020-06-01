@@ -18,17 +18,16 @@ public class PlayerStamina : MonoBehaviour {
 	}
 
     public void LoseStamina() {
-        var value = staminaDepletionRate * Time.deltaTime;
+        float value = staminaDepletionRate * Time.deltaTime;
         staminaController.removeValue(value);
         currentStamina -= value;
     }
 
     public void RecoverStamina() {
-        var value = staminaRecoverRate * Time.deltaTime;
-        if (currentStamina <= maxStamina) {
-            staminaController.addValue(value);
-            currentStamina += value;
-        }
+        float value = staminaRecoverRate * Time.deltaTime;
+        if (!(currentStamina <= maxStamina)) return;
+        staminaController.addValue(value);
+        currentStamina += value;
     }
 
     public bool HasStamina() {

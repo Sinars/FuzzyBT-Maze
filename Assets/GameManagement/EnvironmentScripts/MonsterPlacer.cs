@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class MonsterPlacer : MonoBehaviour {
 
-    private MazeBuilder mazeBuilder;
     private GameObject monsterHolder;
     private GameObject zoneHolder;
 
@@ -17,14 +16,17 @@ public class MonsterPlacer : MonoBehaviour {
     public int maxMonsterCount;
     public int minMonsterCount;
     // Use this for initialization
-    void Start () {
+
+    public void FinalizedWalls(Maze maze)
+    {
+        Debug.Log("Setting monsters");
         int monsterCount = UnityEngine.Random.Range(minMonsterCount, maxMonsterCount);
-        mazeBuilder = GetComponent<MazeBuilder>();
-        PlaceMonsters(mazeBuilder.Maze, monsterCount);
+        PlaceMonsters(maze, monsterCount);
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	    
 	}
 

@@ -50,6 +50,7 @@ public class SpiderAttack : MonoBehaviour {
     }
 
     public void LateUpdate() {
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward)*targetDistance, Color.blue);
         if (poisoned && Time.time > elapsedTime + poisonTime) {
             poisoned = false;
             status.NegateBuff(Effect.POISONED);
